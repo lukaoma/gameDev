@@ -22,10 +22,12 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        float horizontal = Math.Abs(Input.GetAxis("Horizontal"));
+        float horizontal = Input.GetAxis("Horizontal");
         if (Mathf.Abs(horizontal) > float.Epsilon)
         {
-            _rb.AddForce(horizontal * _horizontalSpeed * Time.deltaTime * Vector2.right);
+            Vector3 force = horizontal * _horizontalSpeed * Time.deltaTime * Vector2.right;
+            Debug.Log(force);
+            _rb.AddForce(force);
         }
     }
 }
